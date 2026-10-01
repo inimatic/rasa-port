@@ -67,7 +67,6 @@ class LogisticRegressionClassifier(IntentClassifier, GraphComponent):
             dual=False,
             fit_intercept=True,
             intercept_scaling=1,
-            multi_class="auto",
             verbose=0,
             warm_start=False,
             n_jobs=None,

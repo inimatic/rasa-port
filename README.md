@@ -12,17 +12,19 @@ model loading, and parsing.
 
 - Source base: Rasa Open Source 3.6.x / 3.6.21.
 - License: Apache-2.0. Keep `LICENSE.txt` and `NOTICE` with redistributed code.
-- Runtime target: Python 3.11.9, Windows first, Linux later.
-- Package state: not yet installable as a clean AdaOS package.
-- Dependency state: still upstream-shaped and must be reduced in the next phase.
-- Test state: contract tests are planned before deeper refactoring starts.
+- Runtime target: Python 3.11.9 on Windows and Linux.
+- Package state: published as an installable wheel with contract tests.
+- Dependency state: the default NLU slice is compatible with the AdaOS core
+  environment and intentionally excludes TensorFlow/JAX.
+- Test state: import, training, model loading, parsing, and CLI contracts run in CI.
 
 ## What Stays
 
 - NLU training and inference primitives.
 - Rasa graph engine pieces needed by NLU recipes.
 - Shared data structures, importers, schemas, and utilities used by NLU.
-- TensorFlow helper code required by DIET-style components.
+- TensorFlow helper source retained for compatibility, but its dependencies and
+  DIET-style pipelines are not part of the default supported installation.
 - A minimal compatibility CLI for `python -m rasa train nlu`.
 - A small Core compatibility shell only where NLU loading/parsing still imports it.
 

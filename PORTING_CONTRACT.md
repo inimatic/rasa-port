@@ -40,7 +40,7 @@ close to this shape.
 - NLU data import and validation required for training.
 - NLU pipeline graph construction and execution.
 - Tokenizers, featurizers, classifiers, entity extractors, response selectors.
-- DIET-classifier path and its TensorFlow helper code.
+- The lightweight CountVectors/CRF/LogisticRegression pipeline used by AdaOS.
 - Model archive creation, loading, and metadata required for inference.
 - Minimal compatibility shims for upstream imports used by the NLU path.
 
@@ -52,6 +52,7 @@ close to this shape.
 - Dialogue policies as an AdaOS product surface.
 - Action server and mandatory `rasa-sdk` dependency.
 - Rasa X, enterprise/cloud flows, telemetry product behavior.
+- TensorFlow/JAX components, including DIET, in the default AdaOS installation.
 - Upstream documentation site, CI, release automation, and example projects.
 
 If an out-of-scope module is still present, it is only a temporary compatibility
@@ -62,9 +63,9 @@ shim until tests prove it can be removed or replaced.
 The port must run on Python 3.11.9. Dependency work should prefer explicit,
 boring pins over resolver guesswork. Known areas that need attention:
 
-- TensorFlow must use a Python 3.11-capable version.
-- Numeric stack pins must be explicit: NumPy, SciPy, scikit-learn, and related
-  libraries should not float to incompatible modern releases.
+- The supported pipeline must coexist with the AdaOS core NumPy, SciPy,
+  scikit-learn, packaging, JSON Schema, NetworkX, and SQLAlchemy versions.
+- Dask remains pinned to the graph-runner-compatible 2023.12.1 release.
 - Optional UI, plotting, channel, broker, and server dependencies should not be
   installed for the NLU-only package.
 - Windows support is first-class because AdaOS development currently happens on
