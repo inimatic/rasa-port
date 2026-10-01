@@ -70,7 +70,9 @@ class LogisticRegressionClassifier(IntentClassifier, GraphComponent):
             verbose=0,
             warm_start=False,
             n_jobs=None,
-            l1_ratio=None,
+            # scikit-learn 1.8 deprecates the implicit ``None`` value even for
+            # non-elastic-net solvers.  Zero preserves the previous objective.
+            l1_ratio=0.0,
         )
 
         # We need to use these later when saving the trained component.
