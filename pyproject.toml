@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "adaos-rasa-nlu"
-version = "0.2.0"
+version = "0.2.1"
 description = "AdaOS-controlled Rasa 3.6 NLU port for Python 3.11.9"
 readme = "README.md"
 requires-python = ">=3.11.9,<3.12"

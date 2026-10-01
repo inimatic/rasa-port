@@ -310,9 +310,9 @@ def _replace_edge_labels_with_nodes(
 
 
 def visualization_html_path() -> Text:
-    import pkg_resources
+    from importlib.resources import files
 
-    return pkg_resources.resource_filename(__name__, VISUALIZATION_TEMPLATE_PATH)
+    return str(files(__package__).joinpath(VISUALIZATION_TEMPLATE_PATH))
 
 
 def persist_graph(graph: "networkx.Graph", output_file: Text) -> None:
